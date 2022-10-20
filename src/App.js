@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import WhoImItemList from "./components/WhoImItemList";
 
-function App() {
+function LoaderPractica() {
+  const [loading, setLoading] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <button
+        className="button"
+        onClick={() => {
+          setLoading(true);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
+        }}
+      >
+        Cargar
+      </button>
+
+      <WhoImItemList loading={loading} />
     </div>
   );
 }
 
-export default App;
+export default LoaderPractica;
